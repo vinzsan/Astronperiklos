@@ -1,0 +1,7 @@
+/home/vinz/Satellites/ISO2CPP/build/CMakeFiles/memory_obj.dir
+/home/vinz/Satellites/ISO2CPP/build/CMakeFiles/kernel.elf.dir
+/home/vinz/Satellites/ISO2CPP/build/CMakeFiles/bootloader.dir
+/home/vinz/Satellites/ISO2CPP/build/CMakeFiles/image.dir
+/home/vinz/Satellites/ISO2CPP/build/CMakeFiles/run.dir
+/home/vinz/Satellites/ISO2CPP/build/CMakeFiles/edit_cache.dir
+/home/vinz/Satellites/ISO2CPP/build/CMakeFiles/rebuild_cache.dir

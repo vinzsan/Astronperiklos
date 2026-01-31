@@ -1,0 +1,1 @@
+/usr/bin/c++ -T /home/vinz/Satellites/ISO2CPP/link.ld -nostdlib -ffreestanding -Wl,-m elf_i386 -z noexecstack -Wl,--dependency-file=CMakeFiles/kernel.elf.dir/link.d CMakeFiles/kernel.elf.dir/src/kernel.cc.o CMakeFiles/memory_obj.dir/lib/memory.cc.o -o kernel.elf
