@@ -4,6 +4,8 @@
 CMakeFiles/kernel.elf.dir/src/kernel.cc.o: /home/vinz/Satellites/ISO2CPP/src/kernel.cc \
   /home/vinz/Satellites/ISO2CPP/include/iopl.hpp \
   /home/vinz/Satellites/ISO2CPP/include/kstd.hpp \
+  /home/vinz/Satellites/ISO2CPP/include/irq.hpp \
+  /home/vinz/Satellites/ISO2CPP/include/kstd.hpp \
   /home/vinz/Satellites/ISO2CPP/include/non_acpi.hpp \
   /home/vinz/Satellites/ISO2CPP/lib/memory.hpp \
   /usr/include/bits/long-double.h \
@@ -37,6 +39,10 @@ CMakeFiles/kernel.elf.dir/src/kernel.cc.o:
 
 /usr/include/features-time64.h:
 
+/usr/include/sys/cdefs.h:
+
+/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h:
+
 /home/vinz/Satellites/ISO2CPP/src/kernel.cc:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint-gcc.h:
@@ -53,22 +59,20 @@ CMakeFiles/kernel.elf.dir/src/kernel.cc.o:
 
 /home/vinz/Satellites/ISO2CPP/include/kstd.hpp:
 
+CMakeFiles/memory_obj.dir/lib/memory.cc.o:
+
+/usr/include/c++/15.2.1/cstdint:
+
 /home/vinz/Satellites/ISO2CPP/include/non_acpi.hpp:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h:
+
+/home/vinz/Satellites/ISO2CPP/include/irq.hpp:
 
 /usr/include/bits/long-double.h:
 
 /usr/include/bits/wordsize.h:
 
-CMakeFiles/memory_obj.dir/lib/memory.cc.o:
-
-/usr/include/c++/15.2.1/cstdint:
-
 /home/vinz/Satellites/ISO2CPP/lib/memory.hpp:
 
 /usr/include/c++/15.2.1/pstl/pstl_config.h:
-
-/usr/include/sys/cdefs.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h:

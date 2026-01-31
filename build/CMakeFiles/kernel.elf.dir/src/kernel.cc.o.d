@@ -14,4 +14,6 @@ CMakeFiles/kernel.elf.dir/src/kernel.cc.o: \
  /home/vinz/Satellites/ISO2CPP/src/../include/kstd.hpp \
  /home/vinz/Satellites/ISO2CPP/src/../include/./iopl.hpp \
  /home/vinz/Satellites/ISO2CPP/src/../lib/memory.hpp \
- /home/vinz/Satellites/ISO2CPP/src/../include/non_acpi.hpp
+ /home/vinz/Satellites/ISO2CPP/src/../include/non_acpi.hpp \
+ /home/vinz/Satellites/ISO2CPP/src/../include/irq.hpp \
+ /home/vinz/Satellites/ISO2CPP/src/../include/./kstd.hpp

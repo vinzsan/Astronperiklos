@@ -3,6 +3,7 @@
 #include "../include/kstd.hpp"
 #include "../lib/memory.hpp"
 #include "../include/non_acpi.hpp"
+#include "../include/irq.hpp"
 
 #define DEFAULT_CHAR_BUFFER_READ_SIZE 1024 * 4
 
@@ -16,6 +17,7 @@ enum class KeyboardKey {
 };
 
 enum class CMD_command_list {
+  CMD_START,
   CMD_VM_SHUTDOWN,
   CMD_HELP,
   CMD_CLEAR_SCREEN,
@@ -59,13 +61,48 @@ inline void version_handler(CMD_metadata_args *a) {
   kstd::VGA_framebuffer::write_screen("version 0.1 minor update\n");
 }
 
+inline void start_handler(CMD_metadata_args *a){
+  constexpr int TREE_HEIGHT = 10;      // tinggi pohon
+  constexpr int SCREEN_MID = VGA_DEFAULT_SCREEN_COLUMN / 2;
+  constexpr uint8_t COLOR_TREE = 0x2A; // hijau
+  using namespace kstd::VGA_framebuffer;
+
+    // daun pohon
+    for(int row = 0; row < TREE_HEIGHT; row++){
+        int stars = row * 2 + 1;           // jumlah '*' di level ini
+        int spaces = TREE_HEIGHT - row - 1; // spasi kiri
+
+        // spasi kiri
+        for(int s = 0; s < spaces; s++){
+            putchar_screen(' '); // pakai default color
+        }
+
+        // bintang
+        for(int s = 0; s < stars; s++){
+            write_screen(" ",COLOR_TREE);
+        }
+
+        // newline
+        write_screen("\n");
+    }
+
+    // batang pohon
+    for(int i = 0; i < 2; i++){
+        for(int s = 0; s < TREE_HEIGHT - 1; s++)
+            putchar_screen(' '); // rata tengah
+        putchar_screen('|', 0x4); // batang
+        write_screen("\n");
+    }
+}
+
 CMD_metadata_args args;
 
 static CMD_list_func cmd_list_f[] = {
   {"help",CMD_command_list::CMD_HELP,help_handler},
   {"shutdown",CMD_command_list::CMD_VM_SHUTDOWN,shutdown_handler},
   {"clear",CMD_command_list::CMD_CLEAR_SCREEN,clear_handler},
-  {"version",CMD_command_list::CMD_VERSION,version_handler}
+  {"version",CMD_command_list::CMD_VERSION,version_handler},
+  {"start",CMD_command_list::CMD_START,start_handler}
 };
 
 CMD_list_func *cmd_search_command(char *__input){
@@ -91,6 +128,7 @@ void _start(void){
   );
   
   PAE::enable_nxe();
+  PIT_pack::pit_setup_init(1132);
   kstd::VGA_framebuffer::clear_screen(SET_DEFAULT_COLOR_);
 
   {

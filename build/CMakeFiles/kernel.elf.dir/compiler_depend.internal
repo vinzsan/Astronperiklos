@@ -5,6 +5,8 @@ CMakeFiles/kernel.elf.dir/src/kernel.cc.o
  /home/vinz/Satellites/ISO2CPP/src/kernel.cc
  /home/vinz/Satellites/ISO2CPP/include/iopl.hpp
  /home/vinz/Satellites/ISO2CPP/include/kstd.hpp
+ /home/vinz/Satellites/ISO2CPP/include/irq.hpp
+ /home/vinz/Satellites/ISO2CPP/include/kstd.hpp
  /home/vinz/Satellites/ISO2CPP/include/non_acpi.hpp
  /home/vinz/Satellites/ISO2CPP/lib/memory.hpp
  /usr/include/bits/long-double.h
