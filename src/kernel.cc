@@ -62,37 +62,31 @@ inline void version_handler(CMD_metadata_args *a) {
 }
 
 inline void start_handler(CMD_metadata_args *a){
-  constexpr int TREE_HEIGHT = 10;      // tinggi pohon
-  constexpr int SCREEN_MID = VGA_DEFAULT_SCREEN_COLUMN / 2;
-  constexpr uint8_t COLOR_TREE = 0x2A; // hijau
-  using namespace kstd::VGA_framebuffer;
-
-    // daun pohon
-    for(int row = 0; row < TREE_HEIGHT; row++){
-        int stars = row * 2 + 1;           // jumlah '*' di level ini
-        int spaces = TREE_HEIGHT - row - 1; // spasi kiri
-
-        // spasi kiri
-        for(int s = 0; s < spaces; s++){
-            putchar_screen(' '); // pakai default color
-        }
-
-        // bintang
-        for(int s = 0; s < stars; s++){
-            write_screen(" ",COLOR_TREE);
-        }
-
-        // newline
-        write_screen("\n");
+  constexpr int HEIGHT_AWAL = 3;
+  int skor_buffer = 0;
+  kstd::VGA_framebuffer::clear_screen();
+  kstd::VGA_framebuffer::write_screen("Shell game (preproject)\n",0x5F);
+  for(int x = 0;x < VGA_DEFAULT_SCREEN_COLUMN;x++){
+    kstd::VGA_framebuffer::vga_fb[HEIGHT_AWAL * VGA_DEFAULT_SCREEN_COLUMN + x] = ((uint8_t)0xAF << 8) | ' ';
+    for(int y = HEIGHT_AWAL;y < VGA_DEFAULT_SCREEN_ROW;y++){
+      kstd::VGA_framebuffer::vga_fb[y * VGA_DEFAULT_SCREEN_COLUMN + 0] = ((uint8_t)0xAF << 8) | ' ';
     }
+  }
 
-    // batang pohon
-    for(int i = 0; i < 2; i++){
-        for(int s = 0; s < TREE_HEIGHT - 1; s++)
-            putchar_screen(' '); // rata tengah
-        putchar_screen('|', 0x4); // batang
-        write_screen("\n");
+  for(int x = 0;x < VGA_DEFAULT_SCREEN_COLUMN;x++){
+    kstd::VGA_framebuffer::vga_fb[(VGA_DEFAULT_SCREEN_ROW - 1 )* VGA_DEFAULT_SCREEN_COLUMN + x] = ((uint8_t)0xAF << 8) | ' ';
+    for(int y = HEIGHT_AWAL;y < VGA_DEFAULT_SCREEN_ROW;y++){
+      kstd::VGA_framebuffer::vga_fb[y * VGA_DEFAULT_SCREEN_COLUMN + (VGA_DEFAULT_SCREEN_COLUMN - 1)] = ((uint8_t)0xAF << 8) | ' ';
     }
+  }
+  
+  kstd::VGA_framebuffer::vga_fb[VGA_DEFAULT_SCREEN_ROW * VGA_DEFAULT_SCREEN_COLUMN / 2] = ((uint8_t)0x1F << 8) | ' ';
+  kstd::VGA_framebuffer::global_col_fb = 1;
+  kstd::VGA_framebuffer::global_row_fb = HEIGHT_AWAL + 1;
+  kstd::VGA_framebuffer::write_screen("Skor kamu adalah : ");
+  kstd::VGA_framebuffer::write_screen(kstd::str::int2str(skor_buffer));
+  kstd::VGA_framebuffer::write_screen("\n");
+  PIT_pack::sleep_iter(10000);
 }
 
 CMD_metadata_args args;

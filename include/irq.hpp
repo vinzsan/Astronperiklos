@@ -54,6 +54,13 @@ namespace PIT_pack {
     inline void send_eoi(){
         IOCTL::out_byte<uint8_t>(0x20,0x20);
     }
+    inline void sleep_iter(uint32_t ms){
+        uint32_t _result = ms * 100000;
+        while(_result > 0){
+            __asm__ __volatile__("nop");
+            _result--;
+        }
+    }
 }
 
 #endif
